@@ -1,0 +1,10 @@
+Nombre: prueba de biología
+Fecha de Realización: 15/11/2024
+Tipo: biología
+Resultados: [45.3, 50.1, 48.7]
+
+Nombre: prueba de física
+Fecha de Realización: 16/11/2024
+Tipo: física
+Resultados: [60.5, 65.2, 62.8]
+

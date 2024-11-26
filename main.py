@@ -58,6 +58,23 @@ def analizarResultados(listaExperimentos):
         print(f"Máximo resultado: {maximo:.2f}")
         print(f"Mínimo resultado: {minimo:.2f}")
 
+# Función para comparar experimentos
+def compararExperimentos(listaExperimentos):
+    if len(listaExperimentos) < 2:
+        print("Debe haber al menos dos experimentos para comparar.")
+        return
+    
+    print("\nComparación de experimentos:")
+    for i, experimento in enumerate(listaExperimentos, start=1):
+        promedio = statistics.mean(experimento.resultados)
+        print(f"{i}. {experimento.nombre} - Promedio: {promedio:.2f}")
+    
+    mejor_experimento = max(listaExperimentos, key=lambda e: statistics.mean(e.resultados))
+    peor_experimento = min(listaExperimentos, key=lambda e: statistics.mean(e.resultados))
+    
+    print(f"\nMejor experimento: {mejor_experimento.nombre} - Promedio: {statistics.mean(mejor_experimento.resultados):.2f}")
+    print(f"Peor experimento: {peor_experimento.nombre} - Promedio: {statistics.mean(peor_experimento.resultados):.2f}")
+
 # Función para generar un informe
 def generarInforme(listaExperimentos):
     if not listaExperimentos:
@@ -81,8 +98,9 @@ def menu():
         print("1. Agregar experimento")
         print("2. Visualizar experimentos")
         print("3. Analizar resultados")
-        print("4. Generar informe")
-        print("5. Salir")
+        print("4. Comparar experimentos")
+        print("5. Generar informe")
+        print("6. Salir")
         
         opcion = input("Seleccione una opción: ")
         
@@ -93,8 +111,10 @@ def menu():
         elif opcion == "3":
             analizarResultados(listaExperimentos)
         elif opcion == "4":
-            generarInforme(listaExperimentos)
+            compararExperimentos(listaExperimentos)
         elif opcion == "5":
+            generarInforme(listaExperimentos)
+        elif opcion == "6":
             print("¡Gracias por usar el programa!")
             break
         else:
@@ -102,3 +122,4 @@ def menu():
 
 if __name__ == "__main__":
     menu()
+    
